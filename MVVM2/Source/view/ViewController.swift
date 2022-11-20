@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.registerRow(type: PokeRow.self)
         tableView.registerRow(type: BannerRow.self)
+        tableView.registerRow(type: ErrorRow.self)
         
         viewModel.$sections.sink { sections in
             self.sections = sections
@@ -40,6 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch (sections[section]) {
         case .monster(index: let index, rows: _): return "Pokemon Evolution: #\(index)"
         case .banner(index: _): return nil
+        case .error: return nil
         }
     }
     
@@ -51,6 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch (sections[section]) {
         case .monster(index: _, rows: let rows): return rows.count
         case .banner(index: _): return 1
+        case .error: return 1
         }
     }
     
@@ -66,11 +69,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let poke = rows[indexPath.row]
             bindPokeRow(cell: cell, poke: poke)
             return cell
+        case .error:
+            let cell: ErrorRow = tableView.dequeueRow(index: indexPath)
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.estimatedRowHeight
+        switch (sections[indexPath.section]) {
+        case .monster: return tableView.estimatedRowHeight
+        case .banner: return tableView.estimatedRowHeight
+        case .error: return tableView.bounds.height
+        }
     }
     
     private func bindBannerRow(cell: BannerRow, index: Int) {

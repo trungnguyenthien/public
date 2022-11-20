@@ -16,6 +16,9 @@
 		870458AE292A5C7700C2435B /* BannerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458AB292A5C7700C2435B /* BannerTable.swift */; };
 		870458AF292A5C7700C2435B /* FavoriteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458AC292A5C7700C2435B /* FavoriteTable.swift */; };
 		870458B3292A5D9300C2435B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458B2292A5D9300C2435B /* Common.swift */; };
+		870458B5292A6D9100C2435B /* MonsterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458B4292A6D9100C2435B /* MonsterService.swift */; };
+		870458BA292A73DF00C2435B /* ErrorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458B8292A73DF00C2435B /* ErrorRow.swift */; };
+		870458BB292A73DF00C2435B /* ErrorRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 870458B9292A73DF00C2435B /* ErrorRow.xib */; };
 		876790C628E859DF00A26CA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790C528E859DF00A26CA0 /* AppDelegate.swift */; };
 		876790C828E859DF00A26CA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790C728E859DF00A26CA0 /* SceneDelegate.swift */; };
 		876790CA28E859DF00A26CA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790C928E859DF00A26CA0 /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 		870458AB292A5C7700C2435B /* BannerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerTable.swift; path = ../../../MVC1/Source/data/BannerTable.swift; sourceTree = "<group>"; };
 		870458AC292A5C7700C2435B /* FavoriteTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTable.swift; path = ../../../MVC1/Source/data/FavoriteTable.swift; sourceTree = "<group>"; };
 		870458B2292A5D9300C2435B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = ../../../MVC1/Source/utility/Common.swift; sourceTree = "<group>"; };
+		870458B4292A6D9100C2435B /* MonsterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterService.swift; sourceTree = "<group>"; };
+		870458B8292A73DF00C2435B /* ErrorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRow.swift; sourceTree = "<group>"; };
+		870458B9292A73DF00C2435B /* ErrorRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorRow.xib; sourceTree = "<group>"; };
 		876790C228E859DF00A26CA0 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876790C528E859DF00A26CA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		876790C728E859DF00A26CA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		870458B7292A6DA900C2435B /* service */ = {
+			isa = PBXGroup;
+			children = (
+				870458B4292A6D9100C2435B /* MonsterService.swift */,
+			);
+			name = service;
+			sourceTree = "<group>";
+		};
 		876790B928E859DF00A26CA0 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +105,7 @@
 		876790C428E859DF00A26CA0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				870458B7292A6DA900C2435B /* service */,
 				878F272F291DE7DC00F295A0 /* view */,
 				876790EB2903EA2A00A26CA0 /* utility */,
 				876790E82903DFDA00A26CA0 /* data */,
@@ -141,6 +156,8 @@
 				878F2731291DE82100F295A0 /* PokeRow.xib */,
 				878F273D2920A7A000F295A0 /* BannerRow.swift */,
 				878F273E2920A7A000F295A0 /* BannerRow.xib */,
+				870458B8292A73DF00C2435B /* ErrorRow.swift */,
+				870458B9292A73DF00C2435B /* ErrorRow.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -214,6 +231,7 @@
 				876790EA2903E00D00A26CA0 /* pokedex.json in Resources */,
 				878F27402920A7A000F295A0 /* BannerRow.xib in Resources */,
 				876790CF28E859E300A26CA0 /* Assets.xcassets in Resources */,
+				870458BB292A73DF00C2435B /* ErrorRow.xib in Resources */,
 				876790CD28E859DF00A26CA0 /* Main.storyboard in Resources */,
 				870458A32928980A00C2435B /* .gitignore in Resources */,
 				878F2733291DE82100F295A0 /* PokeRow.xib in Resources */,
@@ -230,11 +248,13 @@
 				878F273F2920A7A000F295A0 /* BannerRow.swift in Sources */,
 				870458A52929DB3900C2435B /* ViewModel.swift in Sources */,
 				870458AF292A5C7700C2435B /* FavoriteTable.swift in Sources */,
+				870458B5292A6D9100C2435B /* MonsterService.swift in Sources */,
 				870458AD292A5C7700C2435B /* MonsterTable.swift in Sources */,
 				870458B3292A5D9300C2435B /* Common.swift in Sources */,
 				876790EF2903EA9800A26CA0 /* model.swift in Sources */,
 				876790CA28E859DF00A26CA0 /* ViewController.swift in Sources */,
 				876790C628E859DF00A26CA0 /* AppDelegate.swift in Sources */,
+				870458BA292A73DF00C2435B /* ErrorRow.swift in Sources */,
 				876790C828E859DF00A26CA0 /* SceneDelegate.swift in Sources */,
 				870458AE292A5C7700C2435B /* BannerTable.swift in Sources */,
 				876790ED2903EA4000A26CA0 /* Bundle+Extension.swift in Sources */,
