@@ -8,6 +8,10 @@
 import Foundation
 
 class ViewModel: ObservableObject {
+    private let favoriteIdsTable = FavoriteIdsTable()
+    private let monsterTable = MonsterTable()
+    private let bannerTable = BannerTable()
+    
     enum Section {
         case banner(index: Int)
         case monster(index: Int, rows: Monsters)
@@ -16,9 +20,9 @@ class ViewModel: ObservableObject {
     @Published private(set) var sections: [Section] = []
     
     func firstLoad() {
-        let bannerPositions = [0, 4, 8, 12, 18, 22]
-        loadAllMonster { monsters in
-            let pokemons = groupPokemons(input: setFavorite(input: monsters))
+        let bannerPositions = bannerTable.bannerPositions()
+        monsterTable.loadAllMonster { monsters in
+            let pokemons = self.groupPokemons(input: self.setFavorite(input: monsters))
             let totalSection = pokemons.count + bannerPositions.count
             var tempSections: [Section] = []
             var bannerIndex = 0
@@ -46,46 +50,46 @@ class ViewModel: ObservableObject {
         monster.isFavorite = !monster.isFavorite
         sections = sections
     }
-}
-
-private func setFavorite(input: Monsters) -> Monsters {
-    var output = Monsters()
-    input.forEach { monster in
-        let copy = monster
-        copy.isFavorite = favoriteIdsTable.has(id: "\(copy.id)")
-        output.append(copy)
-    }
-    return output
-}
-
-private func groupPokemons(input: Monsters) -> [Monsters] {
-    var output = [Monsters]()
     
-    let full = input.map { item -> [Int] in
-        let next = item.evolution.next ?? []
-        let nextIds = next.flatMap { $0 }.compactMap { $0.intOrNil }
-        let prevIds = item.evolution.prev?.compactMap { $0.intOrNil } ?? []
-        var output = [Int]()
-        output.append(item.id)
-        output.append(contentsOf: nextIds)
-        output.append(contentsOf: prevIds)
-        
-        return output.distinct
-    }
-    
-    var current = [Int]()
-    full.forEach { group in
-        if group.containAny(in: current) {
-            current.append(contentsOf: group)
-            current = current.distinct
-        } else if current.isEmpty {
-            current.append(contentsOf: group)
-        } else {
-            let sectionMonster = input.find(ids: current.sorted())
-            output.append(sectionMonster)
-            current = []
+    private func setFavorite(input: Monsters) -> Monsters {
+        var output = Monsters()
+        input.forEach { monster in
+            let copy = monster
+            copy.isFavorite = favoriteIdsTable.has(id: "\(copy.id)")
+            output.append(copy)
         }
+        return output
     }
     
-    return output
+    private func groupPokemons(input: Monsters) -> [Monsters] {
+        var output = [Monsters]()
+        
+        let full = input.map { item -> [Int] in
+            let next = item.evolution.next ?? []
+            let nextIds = next.flatMap { $0 }.compactMap { $0.intOrNil }
+            let prevIds = item.evolution.prev?.compactMap { $0.intOrNil } ?? []
+            var output = [Int]()
+            output.append(item.id)
+            output.append(contentsOf: nextIds)
+            output.append(contentsOf: prevIds)
+            
+            return output.distinct
+        }
+        
+        var current = [Int]()
+        full.forEach { group in
+            if group.containAny(in: current) {
+                current.append(contentsOf: group)
+                current = current.distinct
+            } else if current.isEmpty {
+                current.append(contentsOf: group)
+            } else {
+                let sectionMonster = input.find(ids: current.sorted())
+                output.append(sectionMonster)
+                current = []
+            }
+        }
+        
+        return output
+    }
 }

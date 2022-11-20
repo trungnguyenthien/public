@@ -17,8 +17,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var sections = [Section]()
     
     @IBOutlet weak var tableView: UITableView!
+    private let favoriteIdsTable = FavoriteIdsTable()
+    private let monsterTable = MonsterTable()
+    private let bannerTable = BannerTable()
     var pokemons = [Monsters]()
-    var banners = [0, 4, 8, 12]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +32,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadAllMonster { monsters in
+        let banners = bannerTable.bannerPositions()
+        monsterTable.loadAllMonster { monsters in
             self.pokemons = self.groupPokemons(input: monsters)
-            let totalSection = self.pokemons.count + self.banners.count
+            let totalSection = self.pokemons.count + banners.count
             self.sections.removeAll()
             var bannerIndex = 0
             var monsterIndex = 0
             (0..<totalSection).forEach { index in
-                if self.banners.contains(where: { $0 == index }) {
+                if banners.contains(where: { $0 == index }) {
                     self.sections.append(.banner(index: bannerIndex))
                     bannerIndex += 1
                 } else {
@@ -134,11 +137,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         )
         
         cell.tapOnHeart = { row in
-            let isFavorite = favoriteIdsTable.has(id: id)
+            let isFavorite = self.favoriteIdsTable.has(id: id)
             if isFavorite {
-                favoriteIdsTable.remove(id: id)
+                self.favoriteIdsTable.remove(id: id)
             } else {
-                favoriteIdsTable.add(id: id)
+                self.favoriteIdsTable.add(id: id)
             }
             row.set(isFavorite: !isFavorite)
         }
@@ -147,39 +150,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print("Send Clicklog")
         }
     }
-}
-
-extension Monsters {
-    func find(id: Int) -> Monster? {
-        first { $0.id == id }
-    }
-    
-    func find(ids: [Int]) -> Monsters {
-        ids.compactMap { find(id: $0) }
-    }
-}
-
-extension String {
-    var intOrNil: Int? { Int(self) }
-}
-
-extension Sequence where Iterator.Element: Hashable {
-    var distinct: [Iterator.Element] {
-        var seen: [Iterator.Element: Bool] = [:]
-        return filter { seen.updateValue(true, forKey: $0) == nil }
-    }
-    
-    func containAny(in list: [Iterator.Element]) -> Bool {
-        contains { item1 in
-            list.contains { item1 == $0 }
-        }
-    }
-}
-
-func mainThread(_ code: @escaping () -> Void) {
-    DispatchQueue.main.async { code() }
-}
-
-func background(_ code: @escaping () -> Void) {
-    DispatchQueue.global().async { code() }
 }

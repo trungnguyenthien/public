@@ -7,7 +7,11 @@
 
 import Foundation
 
-let favoriteIdsTable = IdTable(key: "favorite")
+class FavoriteIdsTable: IdTable {
+    init() {
+        super.init(key: "favorite")
+    }
+}
 
 class IdTable {
     private let userDefault = UserDefaults.standard

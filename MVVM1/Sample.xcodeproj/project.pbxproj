@@ -12,6 +12,10 @@
 		870458A129288AA200C2435B /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 870458A029288AA200C2435B /* NukeUI */; };
 		870458A32928980A00C2435B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 870458A22928980A00C2435B /* .gitignore */; };
 		870458A52929DB3900C2435B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458A42929DB3900C2435B /* ViewModel.swift */; };
+		870458AD292A5C7700C2435B /* MonsterTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458AA292A5C7700C2435B /* MonsterTable.swift */; };
+		870458AE292A5C7700C2435B /* BannerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458AB292A5C7700C2435B /* BannerTable.swift */; };
+		870458AF292A5C7700C2435B /* FavoriteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458AC292A5C7700C2435B /* FavoriteTable.swift */; };
+		870458B3292A5D9300C2435B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870458B2292A5D9300C2435B /* Common.swift */; };
 		876790C628E859DF00A26CA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790C528E859DF00A26CA0 /* AppDelegate.swift */; };
 		876790C828E859DF00A26CA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790C728E859DF00A26CA0 /* SceneDelegate.swift */; };
 		876790CA28E859DF00A26CA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790C928E859DF00A26CA0 /* ViewController.swift */; };
@@ -23,7 +27,6 @@
 		876790EF2903EA9800A26CA0 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876790EE2903EA9800A26CA0 /* model.swift */; };
 		878F2732291DE82100F295A0 /* PokeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F2730291DE82100F295A0 /* PokeRow.swift */; };
 		878F2733291DE82100F295A0 /* PokeRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878F2731291DE82100F295A0 /* PokeRow.xib */; };
-		878F273C291F2BE300F295A0 /* FavoriteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F273B291F2BE300F295A0 /* FavoriteTable.swift */; };
 		878F273F2920A7A000F295A0 /* BannerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F273D2920A7A000F295A0 /* BannerRow.swift */; };
 		878F27402920A7A000F295A0 /* BannerRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878F273E2920A7A000F295A0 /* BannerRow.xib */; };
 /* End PBXBuildFile section */
@@ -31,6 +34,10 @@
 /* Begin PBXFileReference section */
 		870458A22928980A00C2435B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		870458A42929DB3900C2435B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		870458AA292A5C7700C2435B /* MonsterTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonsterTable.swift; path = ../../../MVC1/Source/data/MonsterTable.swift; sourceTree = "<group>"; };
+		870458AB292A5C7700C2435B /* BannerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerTable.swift; path = ../../../MVC1/Source/data/BannerTable.swift; sourceTree = "<group>"; };
+		870458AC292A5C7700C2435B /* FavoriteTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTable.swift; path = ../../../MVC1/Source/data/FavoriteTable.swift; sourceTree = "<group>"; };
+		870458B2292A5D9300C2435B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = ../../../MVC1/Source/utility/Common.swift; sourceTree = "<group>"; };
 		876790C228E859DF00A26CA0 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876790C528E859DF00A26CA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		876790C728E859DF00A26CA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +51,6 @@
 		876790EE2903EA9800A26CA0 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		878F2730291DE82100F295A0 /* PokeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeRow.swift; sourceTree = "<group>"; };
 		878F2731291DE82100F295A0 /* PokeRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokeRow.xib; sourceTree = "<group>"; };
-		878F273B291F2BE300F295A0 /* FavoriteTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTable.swift; sourceTree = "<group>"; };
 		878F273D2920A7A000F295A0 /* BannerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerRow.swift; sourceTree = "<group>"; };
 		878F273E2920A7A000F295A0 /* BannerRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerRow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +116,9 @@
 			children = (
 				876790E92903E00D00A26CA0 /* pokedex.json */,
 				876790EE2903EA9800A26CA0 /* model.swift */,
-				878F273B291F2BE300F295A0 /* FavoriteTable.swift */,
+				870458AB292A5C7700C2435B /* BannerTable.swift */,
+				870458AC292A5C7700C2435B /* FavoriteTable.swift */,
+				870458AA292A5C7700C2435B /* MonsterTable.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				876790EC2903EA4000A26CA0 /* Bundle+Extension.swift */,
+				870458B2292A5D9300C2435B /* Common.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -220,11 +229,14 @@
 			files = (
 				878F273F2920A7A000F295A0 /* BannerRow.swift in Sources */,
 				870458A52929DB3900C2435B /* ViewModel.swift in Sources */,
-				878F273C291F2BE300F295A0 /* FavoriteTable.swift in Sources */,
+				870458AF292A5C7700C2435B /* FavoriteTable.swift in Sources */,
+				870458AD292A5C7700C2435B /* MonsterTable.swift in Sources */,
+				870458B3292A5D9300C2435B /* Common.swift in Sources */,
 				876790EF2903EA9800A26CA0 /* model.swift in Sources */,
 				876790CA28E859DF00A26CA0 /* ViewController.swift in Sources */,
 				876790C628E859DF00A26CA0 /* AppDelegate.swift in Sources */,
 				876790C828E859DF00A26CA0 /* SceneDelegate.swift in Sources */,
+				870458AE292A5C7700C2435B /* BannerTable.swift in Sources */,
 				876790ED2903EA4000A26CA0 /* Bundle+Extension.swift in Sources */,
 				878F2732291DE82100F295A0 /* PokeRow.swift in Sources */,
 			);
