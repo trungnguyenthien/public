@@ -8,11 +8,21 @@
 import UIKit
 import Combine
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {    
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    enum Section {
+        case banner(index: Int)
+        case monster(index: Int, rows: Monsters)
+        case error
+    }
+    
+    var sections = [Section]()
+    
     @IBOutlet weak var tableView: UITableView!
-    var viewModel = ViewModel()
+    private let bannerTable = BannerTable()
+    private let monsterService = MonsterService()
     private var cancellables: Set<AnyCancellable> = []
-    var sections = [ViewModel.Section]()
+    var pokemons = [Monsters]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,23 +31,41 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.registerRow(type: PokeRow.self)
         tableView.registerRow(type: BannerRow.self)
         tableView.registerRow(type: ErrorRow.self)
-        
-        viewModel.$sections.sink { sections in
-            self.sections = sections
-            self.reloadTable()
-        }.store(in: &cancellables)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        super.viewDidAppear(animated)
-        viewModel.firstLoad()
+        monsterService.loadByGroup().sink { completion in
+            switch(completion) {
+            case .finished: return
+            case .failure: self.sections = [.error]
+            }
+            self.reloadTable()
+        } receiveValue: { monsters in
+            let bannerPositions = self.bannerTable.bannerPositions()
+            var tempSections: [Section] = []
+            var bannerIndex = 0
+            var monsterIndex = 0
+            let totalSection = monsters.count + bannerPositions.count
+            (0..<totalSection).forEach { index in
+                if bannerPositions.contains(where: { $0 == index }) {
+                    tempSections.append(.banner(index: bannerIndex))
+                    bannerIndex += 1
+                } else {
+                    tempSections.append(.monster(index: monsterIndex, rows: monsters[monsterIndex]))
+                    monsterIndex += 1
+                }
+            }
+            
+            self.sections = tempSections
+            self.reloadTable()
+        }.store(in: &cancellables)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch (sections[section]) {
         case .monster(index: let index, rows: _): return "Pokemon Evolution: #\(index)"
-        case .banner(index: _): return nil
+        case .banner: return nil
         case .error: return nil
         }
     }
@@ -66,7 +94,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let poke = rows[indexPath.row]
             bindPokeRow(cell: cell, poke: poke)
             return cell
-            
         case .error:
             let cell: ErrorRow = tableView.dequeueRow(index: indexPath)
             return cell
@@ -97,8 +124,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             isFavorite: poke.isFavorite
         )
         
-        cell.tapOnHeart = { row in
-            self.viewModel.toggleFavorite(monster: poke)
+        cell.tapOnHeart = { _ in
+            self.monsterService.toggleFavorite(monster: poke)
+            self.reloadTable()
         }
         
         cell.tapOnSelf = { row in

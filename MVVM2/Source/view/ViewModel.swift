@@ -22,13 +22,14 @@ class ViewModel: ObservableObject {
     }
     
     func firstLoad() {
-        let bannerPositions = bannerTable.bannerPositions()
+        
         monsterService.loadByGroup().sink { completion in
             switch(completion) {
             case .finished: return
             case .failure: self.sections = [.error]
             }
         } receiveValue: { monsters in
+            let bannerPositions = self.bannerTable.bannerPositions()
             var tempSections: [Section] = []
             var bannerIndex = 0
             var monsterIndex = 0
