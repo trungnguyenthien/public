@@ -2,7 +2,9 @@
 
 
 
-## Swift 5.1
+
+
+## Swift 5.1 - XCode 11
 
 ### @propertyWrapper
 
@@ -161,7 +163,7 @@ print(scores1) // == score2
 
 
 
-## Swift 5.2
+## Swift 5.2 - XCode 11.4
 
 ### Key Path Expressions as Functions
 
@@ -229,7 +231,7 @@ print(force[-1, default: "The Vulture"]) //The Vulture
 
 
 
-## Swift 5.3
+## Swift 5.3 - XCode 12
 
 ### Multi-pattern catch clauses
 
@@ -332,7 +334,7 @@ enum Padding: Defaultable {
 
 
 
-## Swift 5.4
+## Swift 5.4 - XCode 12.5
 
 ### Multiple variadic parameters (`...`) in functions
 
@@ -444,7 +446,7 @@ makeCookies2()
 
 
 
-## Swift 5.5
+## Swift 5.5 - XCode 13
 
 ### Async-Await
 
@@ -648,13 +650,18 @@ func printUserDetails() async {
 
 
 
-## Swift 5.6
+## Swift 5.6 - XCode 13.3
 
+[What’s new in Swift 5.6? – Hacking with Swift](https://www.hackingwithswift.com/articles/247/whats-new-in-swift-5-6)
 
+## Swift 5.7 - XCode 14
 
-## Swift 5.7
+[What’s new in Swift 5.7 – Hacking with Swift](https://www.hackingwithswift.com/articles/249/whats-new-in-swift-5-7)
 
+## Swift 5.8 - XCode 14.3
 
+[What's new in Swift 5.8 – Hacking with Swift](https://www.hackingwithswift.com/articles/256/whats-new-in-swift-5-8)
 
-## Swift 5.8
+# Swift 5.9 - XCode 15
 
+[What’s new in Swift 5.9? – Hacking with Swift](https://www.hackingwithswift.com/articles/258/whats-new-in-swift-5-9)
